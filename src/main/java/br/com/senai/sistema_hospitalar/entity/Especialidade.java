@@ -40,10 +40,16 @@ public class Especialidade {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-
-
-
-
-    
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public List<Especialidade> getEspecialidade() {
+        return especialidade;
+    }
+    public void setEspecialidade(List<Especialidade> especialidade) {
+        this.especialidade = especialidade;
+    }
 }

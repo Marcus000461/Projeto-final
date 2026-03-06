@@ -25,6 +25,7 @@ public class Receita {
     private Medico medico;
     @PastOrPresent
     private LocalDate data_emissão;
+    private String desc_medicamento;
    
    
     public Long getId() {
@@ -51,8 +52,14 @@ public class Receita {
     public void setData_emissão(LocalDate data_emissão) {
         this.data_emissão = data_emissão;
     }
+    public String getDesc_medicamento() {
+        return desc_medicamento;
+    }
+    public void setDesc_medicamento(String desc_medicamento) {
+        this.desc_medicamento = desc_medicamento;
+    }
 
-
+    
 
     
 }

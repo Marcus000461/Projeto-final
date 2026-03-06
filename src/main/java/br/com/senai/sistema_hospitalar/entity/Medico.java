@@ -46,8 +46,15 @@ public class Medico {
 
     public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
+
     }
 
+    public String getCrm() {
+        return crm;
+    }
 
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
     
 }
