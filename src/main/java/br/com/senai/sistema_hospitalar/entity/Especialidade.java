@@ -1,12 +1,10 @@
 package br.com.senai.sistema_hospitalar.entity;
 
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,9 +20,7 @@ public class Especialidade {
     @Size(min=30, max= 60, message = "A descrição pode variar de tamanho")                                                                                                                                                                                                          
     
     
-    @OneToMany
-    @JoinColumn( name = "ref_especialidade")
-    private List<Especialidade>especialidade;
+    @OneToMany(mappedBy = "especialidade")
     
     
     
@@ -46,10 +42,5 @@ public class Especialidade {
     public void setId(Long id) {
         this.id = id;
     }
-    public List<Especialidade> getEspecialidade() {
-        return especialidade;
-    }
-    public void setEspecialidade(List<Especialidade> especialidade) {
-        this.especialidade = especialidade;
-    }
+   
 }
