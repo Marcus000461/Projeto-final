@@ -72,6 +72,6 @@ public class ReceitaController {
         }
 
         repository.deleteById(id);
-         return new Response(204, "Receita deletada"); // A receita será deletada.
+         return new Response(200, "Receita deletada"); // A receita será deletada.
     }
 }

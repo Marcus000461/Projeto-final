@@ -27,7 +27,7 @@ public class MedicoController {
     @PostMapping
     public Response adicionaMedico(@Valid @RequestBody Medico medico){
         repository.save(medico);
-         return new Response(204, " Medico não encontrado"); //atualiza para ver se o medico existe//
+         return new Response(200, " Medico encontrado"); //atualiza para ver se o medico existe//
     }
 
     @GetMapping
@@ -51,8 +51,10 @@ public class MedicoController {
           if (entity.getEspecialidade() != null) {
             medico.setEspecialidade(entity.getEspecialidade());
         }
+
+        repository.save(medico);
         
-         return new Response(204, "Medico atualizado"); // atualiza o médico.
+         return new Response(200, "Medico atualizado"); // atualiza o médico.
     }
 
 
@@ -61,7 +63,8 @@ public class MedicoController {
         if(!repository.existsById(id)){
             return new Response(404, "Médico não deletado"); //Não vai vir retorno nenhum 
         }
-         return new Response(204, "Médico deletado"); // apagou o retorno
+         repository.deleteById(id);
+         return new Response(200, "Médico deletado"); // apagou o retorno
     }
 
 }

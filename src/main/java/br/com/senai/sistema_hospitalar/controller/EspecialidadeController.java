@@ -28,7 +28,7 @@ public class EspecialidadeController {
     private EspecialidadeRepository repository;
     
     @PostMapping
-    private Response escolhaEspecialidade (@Valid @RequestBody Especialidade especialidade) {
+    public Response escolhaEspecialidade (@Valid @RequestBody Especialidade especialidade) {
         repository.save(especialidade);
         return new Response(200, "Especialidade encontrada");
          //O servidor não pode encontrar o recurso solicitado.
@@ -64,7 +64,7 @@ public class EspecialidadeController {
         if(!repository.existsById(id)){
              return new Response(404, "Especialidade não deletada"); // Nesse erro não terá retorno
         }
-         return new Response(204, "Especialidade deletada"); //Especialidade será deletada//
+         return new Response(200, "Especialidade deletada"); //Especialidade será deletada//
     }
 
 }

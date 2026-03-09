@@ -27,7 +27,7 @@ public class ConsultaController {
     @PostMapping
     public Response adicionaConsulta(@Valid @RequestBody Consulta consulta){
         repository.save(consulta);
-        return new Response(201, "Consulta não encontrada");
+        return new Response(200, "Consulta encontrada");
         // //O servidor não pode encontrar o recurso solicitado. 
    
    
@@ -38,11 +38,11 @@ public class ConsultaController {
         return repository.findAll();
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Response AtualizaConsulta(@PathVariable Long id, @RequestBody Consulta entity){
         
         if(!repository.existsById(id)){
-            return new Response(404, "Não encontrado"); //O servidor não pode encontrar o recurso solicitado.
+            return new Response(404, "Consulta não atualizada"); //O servidor não pode encontrar o recurso solicitado.
         }
         
         
@@ -56,7 +56,7 @@ public class ConsultaController {
         }
 
         repository.save(consulta);
-        return new Response(200, "Não encontrado"); // O produto será atualizado
+        return new Response(200, "Consulta atualizada"); // O produto será atualizado
     }
 
     public ConsultaRepository getRepository() {
@@ -70,8 +70,9 @@ public class ConsultaController {
     @DeleteMapping("/{id}")
     public Response deletaConsulta(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-             return new Response(404, "Consulta não encontrada");//Consulta será deletada//
+             return new Response(404, "Consulta não deletada");//Consulta será deletada//
         }
+         repository.deleteById(id);
         return new Response(200, "Consulta deletada");
     }
 

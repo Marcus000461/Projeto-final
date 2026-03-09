@@ -27,7 +27,7 @@ public class PacienteController {
     @PostMapping
     public Response adicionaPaciente (@Valid @RequestBody Paciente paciente){
         repository.save(paciente);
-        return new Response(200, "Paciente não cadastrado");
+        return new Response(200, "Paciente cadastrado");
     }
 
     @GetMapping
@@ -39,7 +39,7 @@ public class PacienteController {
     public Response atualizaPaciente(@PathVariable Long id, @RequestBody Paciente entity) {
 
         if(!repository.existsById(id)){
-            return new Response(404, "Consulta não atualizada");
+            return new Response(404, "Paciente não atualizada");
             
         }
         Paciente paciente = repository.findById(id).get();
@@ -72,6 +72,6 @@ public class PacienteController {
             repository.deleteById(id);
 
 
-        return new Response(204, "Paciente deletada");
+        return new Response(200, "Paciente deletada");
     }
 }
