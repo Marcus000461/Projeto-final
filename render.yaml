@@ -1,14 +1,18 @@
-services:
-  # Configuração da API (Web Service)
-  - type: web
-    name: minha-api-spring
-    runtime: docker
-    plan: free
-    envVars:
+envVars:
       - key: DB_URL
+        value: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - key: DB_HOST
         fromDatabase:
           name: meu-db-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: meu-db-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: meu-db-postgres
+          property: database
       - key: DB_USER
         fromDatabase:
           name: meu-db-postgres
@@ -17,8 +21,3 @@ services:
         fromDatabase:
           name: meu-db-postgres
           property: password
-
-# Configuração do Banco de Dados
-databases:
-  - name: meu-db-postgres
-    plan: free
